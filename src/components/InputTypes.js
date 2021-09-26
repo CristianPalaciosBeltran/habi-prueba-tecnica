@@ -1,25 +1,55 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 
-const Input = ({ label, placeholder, error }) => {
+import { useFormContext } from "react-hook-form";
+
+const Input = ({
+  label,
+  placeholder,
+  type,
+  nameBack,
+  required,
+  register,
+  errors,
+}) => {
   return (
     <>
-      <Form.Label htmlFor="">{label}</Form.Label>
-      <Form.Control type="text" placeholder={placeholder} />
-      <div className="text-danger">{error}</div>
+      <Form.Label htmlFor={nameBack}>
+        {label && `${label} ${required.value && "*"}`}
+      </Form.Label>
+      <Form.Control
+        type={type}
+        placeholder={placeholder}
+        name={nameBack}
+        {...register(nameBack, {
+          required: { value: required.value, message: required.message },
+        })}
+      />
+      {errors[nameBack] && (
+        <div className="text-danger">{errors[nameBack].message}</div>
+      )}
     </>
   );
 };
 
 const ChooseInput = ({ input }) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   switch (input.type) {
+    case "number":
+    case "email":
     case "text":
       return (
         <Input
+          nameBack={input.nameBack}
+          required={input.required}
           label={input.label}
           type={input.type}
           placeholder={input.placeholder}
-          error={input.error}
+          register={register}
+          errors={errors}
         />
       );
     default:
@@ -29,6 +59,7 @@ const ChooseInput = ({ input }) => {
           type={input.type}
           placeholder={input.placeholder}
           error={input.error}
+          {...methods}
         />
       );
   }

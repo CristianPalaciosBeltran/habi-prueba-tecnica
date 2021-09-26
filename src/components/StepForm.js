@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useHistory } from "react-router";
 import StepContext from "../context/StepContext";
+import { useForm, FormProvider } from "react-hook-form";
 
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -9,32 +10,28 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 
 import InputTypes from "./InputTypes";
-
-const StepsBar = () => {
-  const steps = useContext(StepContext);
-  return (
-    <Col lg={3} className="step-bar">
-      {steps.map((step, i) => {
-        return (
-          <div key={step.id} className="layout-step-bar">
-            <div className="circle active">{i + 1}</div>
-            <div className="layout-step-info">
-              <h6>paso {step.step}</h6>
-              <h4>{step.summaryTitle}</h4>
-              <div>Nombre: </div>
-            </div>
-          </div>
-        );
-      })}
-    </Col>
-  );
-};
+import StepsBar from "./StepsBar";
 
 const StepForm = () => {
-  let location = useLocation().pathname;
+  const location = useLocation().pathname;
+  const history = useHistory();
 
   const steps = useContext(StepContext);
   const step = steps.filter((step) => step.path === location)[0];
+
+  const methods = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    const stepNext = step.step + 1;
+
+    const moveNext = steps.find((step) => step.step === stepNext);
+    if (moveNext) {
+      history.push(moveNext.path);
+    } else {
+      history.push("/summary");
+    }
+  };
+  const prev = () => history.goBack();
 
   return (
     <section className="step-form">
@@ -42,21 +39,31 @@ const StepForm = () => {
         <StepsBar />
         <Col lg={{ span: 6, offset: 1 }}>
           <h1 className="mb-5">{step.description}</h1>
-          <Form action="" className="layout-form">
-            <Row>
-              {step.inputs.map((input, i) => {
-                return (
-                  <Col lg={input.col} key={i} className="layout-input">
-                    <InputTypes input={input} />
-                  </Col>
-                );
-              })}
-              <div className="d-flex">
-                <Button>Regresar</Button>
-                <Button>{step.labelButtonNext}</Button>
-              </div>
-            </Row>
-          </Form>
+          <FormProvider {...methods}>
+            <Form
+              onSubmit={methods.handleSubmit(onSubmit)}
+              className="layout-form"
+            >
+              <Row>
+                {step.inputs.map((input, i) => {
+                  return (
+                    <Col lg={input.col} key={i} className="layout-input">
+                      <InputTypes input={input} />
+                    </Col>
+                  );
+                })}
+              </Row>
+              <Row>
+                <Col lg={6}>
+                  {/*renderear solo del primero en adelante */}
+                  {step.step > 1 && <Button onClick={prev}>Regresar</Button>}
+                </Col>
+                <Col lg={6}>
+                  <Button type="submit">{step.labelButtonNext}</Button>
+                </Col>
+              </Row>
+            </Form>
+          </FormProvider>
         </Col>
       </Container>
     </section>
