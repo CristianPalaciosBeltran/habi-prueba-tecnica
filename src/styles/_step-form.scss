@@ -1,0 +1,18 @@
+.step-form {
+  .container {
+    display: flex;
+  }
+  .layout-input {
+    display: flex;
+    flex-direction: column;
+    input {
+      background-color: $grey-x;
+      border: none;
+      border-radius: 1rem;
+      padding-inline-end: 20px;
+      padding-inline-start: 20px;
+      padding-block-start: 22px;
+      padding-block-end: 22px;
+    }
+  }
+}
