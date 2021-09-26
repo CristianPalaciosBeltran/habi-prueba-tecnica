@@ -8,6 +8,8 @@ import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 
+import InputTypes from "./InputTypes";
+
 const StepsBar = () => {
   const steps = useContext(StepContext);
   return (
@@ -45,9 +47,7 @@ const StepForm = () => {
               {step.inputs.map((input, i) => {
                 return (
                   <Col lg={input.col} key={i} className="layout-input">
-                    <Form.Label htmlFor="">{input.label}</Form.Label>
-                    <Form.Control type="text" placeholder={input.placeholder} />
-                    <div>error</div>
+                    <InputTypes input={input} />
                   </Col>
                 );
               })}
