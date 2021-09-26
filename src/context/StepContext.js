@@ -13,7 +13,7 @@ const StepContext = React.createContext([
           message: "Introdusca un nombre.",
         },
         class: "",
-        col: "",
+        col: 12,
         valueBack: "completeName",
       },
     ],
