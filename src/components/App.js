@@ -1,41 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Home from "./Home";
 import StepForm from "./StepForm";
 import Navbar from "./Navbar";
-
-const Steps = [
-  {
-    inputs: [
-      {
-        label: "¿Cuál es tu nombre completo?",
-        typeInput: "text",
-        placeholder: "nombre completo",
-        required: {
-          value: true,
-          message: "Introdusca un nombre.",
-        },
-        class: "",
-        col: "",
-      },
-    ],
-    path: "/step-1-complete-name",
-    step: 1,
-    description: "Para comenzar necesitamos conocerte un poco mejor",
-    labelButtonNext: "Continuar",
-    valueBack: "completeName",
-  },
-];
+import StepContext from "../context/StepContext";
 
 const StepsRoutes = () => {
+  const steps = useContext(StepContext);
+  console.log(steps);
   return (
     <>
-      {Steps.map((step) => {
-        return <Route exact path={step.path} component={StepForm} />;
+      {steps.map((step) => {
+        return (
+          <Route key={step.step} exact path={step.path} component={StepForm} />
+        );
       })}
     </>
   );
 };
+
 const App = () => {
   return (
     <BrowserRouter>

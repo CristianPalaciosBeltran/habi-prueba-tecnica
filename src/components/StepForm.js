@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useLocation } from "react-router";
+import StepContext from "../context/StepContext";
 
 const StepForm = () => {
+  let location = useLocation().pathname;
+
+  const step = useContext(StepContext).filter((step) => step.path === location)[0];
+
   return (
     <section>
       <div className="container">
@@ -15,6 +21,7 @@ const StepForm = () => {
           </div>
         </div>
         <div>
+          <div>{step.description}</div>
           <form action="">
             <label htmlFor="">label</label>
             <input type="text" />
