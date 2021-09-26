@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -11,8 +12,8 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
-      "components": path.resolve(__dirname, "src/components/"),
-      "styles": path.resolve(__dirname, "src/styles/"),
+      components: path.resolve(__dirname, "src/components/"),
+      styles: path.resolve(__dirname, "src/styles/"),
     },
   },
   mode: "development",
@@ -33,6 +34,10 @@ module.exports = {
         test: /\.s[ac]ss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.(png|svg)/i,
+        type: "asset/resource",
+      },
     ],
   },
   plugins: [
@@ -42,6 +47,14 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: "[name.css]",
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src", "assets/"),
+          to: "assets/",
+        },
+      ],
     }),
   ],
   devServer: {

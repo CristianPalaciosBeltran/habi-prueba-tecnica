@@ -1,5 +1,26 @@
 @import "_variables.scss";
+@import "_body.scss";
+@import "_navbar.scss";
 
-body {
-  border: 1px solid $primary;
+.container {
+  padding-inline-start: 15px;
+  padding-inline-end: 15px;
+  margin-inline-end: auto;
+  margin-inline-start: auto;
+  width: 1320px;
+  @media (max-width: 1200px) {
+    width: 1140px;
+  }
+  @media (max-width: 992px) {
+    width: 960px;
+  }
+  @media (max-width: 768px) {
+    width: 720px;
+  }
+  @media (max-width: 576px) {
+    width: 540px;
+  }
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 }
