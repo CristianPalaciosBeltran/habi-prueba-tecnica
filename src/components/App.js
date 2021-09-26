@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Home from "./Home";
+import StepForm from "./StepForm";
+import Navbar from "./Navbar";
 
 const Steps = [
   {
@@ -24,13 +26,23 @@ const Steps = [
     valueBack: "completeName",
   },
 ];
+
+const StepsRoutes = () => {
+  return (
+    <>
+      {Steps.map((step) => {
+        return <Route exact path={step.path} component={StepForm} />;
+      })}
+    </>
+  );
+};
 const App = () => {
   return (
     <BrowserRouter>
+      <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
-
-        {/* <div>{Steps[0].description}</div> */}
+        <StepsRoutes />
       </Switch>
     </BrowserRouter>
   );

@@ -1,11 +1,18 @@
 import React from "react";
-import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ path }) => {
   return (
     <>
-      <Navbar />
-      <div>Home</div>
+     
+      <section className="home">
+        <div className="container">
+          <div>¿Quieres vender tu inmubeble? nosotros te ayudamos</div>
+          <Link to={"/step-1-complete-name"} className="primary-button">
+            Vender
+          </Link>
+        </div>
+      </section>
     </>
   );
 };
