@@ -1,4 +1,6 @@
 import React from "react";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import Home from "./Home";
 
 const Steps = [
   {
@@ -18,15 +20,19 @@ const Steps = [
     path: "/step-1-complete-name",
     step: 1,
     description: "Para comenzar necesitamos conocerte un poco mejor",
-    labelButtonNext: 'Continuar',
+    labelButtonNext: "Continuar",
     valueBack: "completeName",
   },
 ];
 const App = () => {
   return (
-    <>
-      <div>{Steps[0].description}</div>
-    </>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+
+        {/* <div>{Steps[0].description}</div> */}
+      </Switch>
+    </BrowserRouter>
   );
 };
 
