@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useLocation, useHistory } from "react-router";
-import StepContext from "../context/StepContext";
+import StepContext, { SET_STATE, useApp } from "../context/StepContext";
 import { useForm, FormProvider } from "react-hook-form";
 
 import Button from "react-bootstrap/Button";
@@ -16,13 +16,12 @@ const StepForm = () => {
   const location = useLocation().pathname;
   const history = useHistory();
 
-  const steps = useContext(StepContext);
+  const [{ steps, finalValues }, dispatch] = useApp();
   const step = steps.filter((step) => step.path === location)[0];
 
   const methods = useForm();
   const onSubmit = (data) => {
-    console.log(data);
-
+    dispatch({ type: SET_STATE, stepNumber: step.step, data });
     const stepNext = step.step + 1;
     const moveNext = steps.find((step) => step.step === stepNext);
     if (moveNext) {
@@ -31,6 +30,7 @@ const StepForm = () => {
       history.push("/summary");
     }
   };
+
   const prev = () => history.goBack();
 
   return (
@@ -74,7 +74,7 @@ const StepForm = () => {
             </FormProvider>
           </Col>
           <Col lg={{ span: 3, offset: 1 }}>
-            <div className="p-5 bg-primary"></div>
+            <div className="p-5 bg-primary">{JSON.stringify(finalValues)}</div>
           </Col>
         </Row>
       </Container>

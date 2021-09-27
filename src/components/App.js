@@ -3,11 +3,11 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Home from "./Home";
 import StepForm from "./StepForm";
 import Navbar from "./Navbar";
-import StepContext from "../context/StepContext";
+import { AppProvider, useAppState } from "../context/StepContext";
 
 const StepsRoutes = () => {
-  const steps = useContext(StepContext);
-  console.log(steps);
+  const { steps } = useAppState();
+
   return (
     <>
       {steps.map((step) => {
@@ -18,8 +18,7 @@ const StepsRoutes = () => {
     </>
   );
 };
-
-const App = () => {
+const Router = () => {
   return (
     <BrowserRouter>
       <Navbar />
@@ -28,6 +27,14 @@ const App = () => {
         <StepsRoutes />
       </Switch>
     </BrowserRouter>
+  );
+};
+
+const App = () => {
+  return (
+    <AppProvider>
+      <Router />
+    </AppProvider>
   );
 };
 

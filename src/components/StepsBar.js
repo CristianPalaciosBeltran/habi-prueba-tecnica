@@ -1,26 +1,26 @@
-import React, { useContext } from "react";
-import StepContext from "../context/StepContext";
+import React from "react";
+import { Link } from "react-router-dom";
+import logoHabi from "../assets/logo.svg";
 
-import Col from "react-bootstrap/Col";
+import NavbarB from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
-const StepsBar = () => {
-  const steps = useContext(StepContext);
+const Navbar = () => {
   return (
-    <Col lg={12} className="step-bar d-flex">
-      {steps.map((step, i) => {
-        return (
-          <div key={step.id} className="layout-step-bar">
-            <div className="circle active">{i + 1}</div>
-            <div className="layout-step-info">
-              <h6>paso {step.step}</h6>
-              <h4>{step.summaryTitle}</h4>
-              <div>Nombre: </div>
-            </div>
+    <div className='bg-nav'>
+      <NavbarB className="container py-3">
+        <Container className=" d-flex justify-content-between">
+          <Link to="/" className="logo">
+            <img src={logoHabi} width={111} height={27} alt="logo habi" />
+          </Link>
+          <div>
+            <Button className="primary-button">Ayuda</Button>
           </div>
-        );
-      })}
-    </Col>
+        </Container>
+      </NavbarB>
+    </div>
   );
 };
 
-export default StepsBar;
+export default Navbar;

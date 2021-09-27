@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import StepContext from "../context/StepContext";
+import { useAppState } from "../context/StepContext";
 
-const Home = ({ path }) => {
-  const firstStep = useContext(StepContext)[0];
+const Home = () => {
+  const {
+    steps: [firstStep],
+  } = useAppState();
   return (
     <>
       <section className="home">

@@ -11,6 +11,7 @@ const Input = ({
   required,
   register,
   errors,
+  defaultValue,
 }) => {
   return (
     <>
@@ -24,6 +25,7 @@ const Input = ({
         {...register(nameBack, {
           required: { value: required.value, message: required.message },
         })}
+        defaultValue={defaultValue}
       />
       {errors[nameBack] && (
         <div className="text-danger mt-2 small">{errors[nameBack].message}</div>
@@ -32,12 +34,21 @@ const Input = ({
   );
 };
 
-const CheckBox = ({ label, type, nameBack, required, register, errors }) => {
+const CheckBox = ({
+  label,
+  type,
+  nameBack,
+  required,
+  register,
+  errors,
+  defaultChecked,
+}) => {
   return (
     <div className="d-flex align-items-center">
       <Form.Check.Input
         type={type}
         name={nameBack}
+        defaultChecked={defaultChecked}
         className={"input-check me-2"}
         {...register(nameBack, {
           required: { value: required.value, message: required.message },
@@ -53,15 +64,17 @@ const CheckBox = ({ label, type, nameBack, required, register, errors }) => {
   );
 };
 
-const Switch = ({ label, type, nameBack, required, register, errors }) => {
-  const defaultValues = {
-    Checkbox: true,
-    switch: true,
-    switch2: true,
-    RadioGroup: "Sí",
-  };
+const Switch = ({
+  label,
+  type,
+  nameBack,
+  required,
+  register,
+  errors,
+  defaultChecked,
+}) => {
   return (
-    <div className='mb-5'>
+    <div className="mb-5">
       <Form.Label>{label && `${label} ${required.value && "*"}`}</Form.Label>
       <div className="d-flex switch-radio">
         <div className="d-flex align-items-center me-5">
@@ -72,7 +85,7 @@ const Switch = ({ label, type, nameBack, required, register, errors }) => {
               required: { value: required.value, message: required.message },
             })}
             value="yes"
-            checked
+            defaultChecked={defaultChecked === "yes"}
           />
           <Form.Check.Label htmlFor={nameBack}>Sí</Form.Check.Label>
         </div>
@@ -84,6 +97,7 @@ const Switch = ({ label, type, nameBack, required, register, errors }) => {
               required: { value: required.value, message: required.message },
             })}
             value="no"
+            defaultChecked={defaultChecked === "no"}
           />
           <Form.Check.Label htmlFor={nameBack}>No</Form.Check.Label>
         </div>
@@ -107,6 +121,7 @@ const ChooseInput = ({ input }) => {
     case "text":
       return (
         <Input
+          defaultValue={input.defaultValue}
           nameBack={input.nameBack}
           required={input.required}
           label={input.label}
@@ -126,6 +141,7 @@ const ChooseInput = ({ input }) => {
           placeholder={input.placeholder}
           register={register}
           errors={errors}
+          defaultChecked={input.defaultChecked}
         />
       );
     case "switch":
@@ -138,6 +154,7 @@ const ChooseInput = ({ input }) => {
           placeholder={input.placeholder}
           register={register}
           errors={errors}
+          defaultChecked={input.defaultChecked}
         />
       );
     default:
