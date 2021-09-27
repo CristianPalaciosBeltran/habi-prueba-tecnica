@@ -1,29 +1,7 @@
-@import "_variables.scss";
-@import "_body.scss";
-@import "_navbar.scss";
-@import "_button.scss";
-@import "_step-form.scss";
-@import "_step-bar.scss";
-
-.container {
-  padding-inline-start: 15px;
-  padding-inline-end: 15px;
-  margin-inline-end: auto;
-  margin-inline-start: auto;
-  width: 1320px;
-  @media (max-width: 1200px) {
-    width: 1140px;
-  }
-  @media (max-width: 992px) {
-    width: 960px;
-  }
-  @media (max-width: 768px) {
-    width: 720px;
-  }
-  @media (max-width: 576px) {
-    width: 540px;
-  }
-  @media (max-width: 400px) {
-    width: 100%;
-  }
-}
+@import "custom";
+@import "variables";
+@import "body";
+@import "navbar";
+@import "button";
+@import "step-form";
+@import "step-bar";

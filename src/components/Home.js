@@ -9,7 +9,7 @@ const Home = ({ path }) => {
       <section className="home">
         <div className="container">
           <h1>¿Quieres vender tu inmubeble? nosotros te ayudamos</h1>
-          <Link to={firstStep.path} className="primary-button">
+          <Link to={firstStep.path} className="btn btn-primary">
             Vender
           </Link>
         </div>

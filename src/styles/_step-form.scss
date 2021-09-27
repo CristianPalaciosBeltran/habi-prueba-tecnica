@@ -1,7 +1,6 @@
 .step-form {
-  .container {
-    display: flex;
-  }
+  padding-top: 100px;
+
   .layout-input {
     display: flex;
     flex-direction: column;
@@ -13,6 +12,56 @@
       padding-inline-start: 20px;
       padding-block-start: 22px;
       padding-block-end: 22px;
+    }
+  }
+
+  .btn-primary {
+    background-color: $primary;
+    width: 100%;
+    padding-block-end: 20px;
+    padding-block-start: 20px;
+    border-radius: 16px;
+  }
+
+  .btn-outline-secondary {
+    width: 100%;
+    padding-block-end: 20px;
+    padding-block-start: 20px;
+    border-radius: 16px;
+  }
+
+  .switch-radio {
+    input[type="radio"] {
+      //display: none;
+    }
+    label {
+      position: relative;
+      color: $primary;
+      font-size: 30px;
+      border: 2px solid $primary;
+      border-radius: 8px;
+      padding: 10px 50px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    label:before {
+      content: "";
+      height: 30px;
+      width: 30px;
+      border: 3px solid $primary;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+    input[type="radio"]:checked + label {
+      background-color: $primary;
+      color: white;
+    }
+    input[type="radio"]:checked + label:before {
+      height: 16px;
+      width: 16px;
+      border: 10px solid $primary;
+      background-color: $primary;
     }
   }
 }

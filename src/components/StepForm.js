@@ -22,8 +22,8 @@ const StepForm = () => {
   const methods = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    const stepNext = step.step + 1;
 
+    const stepNext = step.step + 1;
     const moveNext = steps.find((step) => step.step === stepNext);
     if (moveNext) {
       history.push(moveNext.path);
@@ -34,8 +34,8 @@ const StepForm = () => {
   const prev = () => history.goBack();
 
   return (
-    <section className="step-form">
-      <Container>
+    <section className="step-form ">
+      <Container className="d-flex">
         <StepsBar />
         <Col lg={{ span: 6, offset: 1 }}>
           <h1 className="mb-5">{step.description}</h1>
@@ -53,10 +53,14 @@ const StepForm = () => {
                   );
                 })}
               </Row>
-              <Row>
+              <Row className="mt-5">
                 <Col lg={6}>
                   {/*renderear solo del primero en adelante */}
-                  {step.step > 1 && <Button onClick={prev}>Regresar</Button>}
+                  {step.step > 1 && (
+                    <Button variant="outline-secondary" onClick={prev}>
+                      Regresar
+                    </Button>
+                  )}
                 </Col>
                 <Col lg={6}>
                   <Button type="submit">{step.labelButtonNext}</Button>

@@ -27,7 +27,7 @@ const StepContext = React.createContext([
     id: 2,
     inputs: [
       {
-        label: "¿Cuál es tu corroe?",
+        label: "¿Cuál es tu correo?",
         type: "email",
         placeholder: "Ingresa tu correo",
         required: {
@@ -77,7 +77,7 @@ const StepContext = React.createContext([
         type: "text",
         placeholder: "No. Interior",
         required: {
-          value: true,
+          value: "",
           message: "No. Interior",
         },
         class: "",
@@ -146,7 +146,154 @@ const StepContext = React.createContext([
     path: "/step-4-flat",
     step: 4,
     summaryTitle: "Información de piso",
-    description: "Necesitamos sabe en que piso esta ubicado su departamento.",
+    description: "En que piso esta ubicado su departamento.",
+    labelButtonNext: "Continuar",
+  },
+  {
+    id: 5,
+    inputs: [
+      {
+        label: "Zona BBQ",
+        type: "checkbox",
+        placeholder: "",
+        required: {
+          value: "",
+          message: "",
+        },
+        class: "",
+        col: 12,
+        nameBack: "zonaBBQ",
+      },
+      {
+        label: "Salón comunal",
+        type: "checkbox",
+        placeholder: "",
+        required: {
+          value: "",
+          message: "",
+        },
+        class: "",
+        col: 12,
+        nameBack: "salonComunal",
+      },
+      {
+        label: "Parque de Juegos",
+        type: "checkbox",
+        placeholder: "",
+        required: {
+          value: "",
+          message: "",
+        },
+        class: "",
+        col: 12,
+        nameBack: "parqueJuegos",
+      },
+    ],
+    path: "/step-5-spaces",
+    step: 5,
+    summaryTitle: "Información de espacios",
+    description:
+      "¿Su departamento cuenta con los siguientes espacios?",
+    labelButtonNext: "Continuar",
+  },
+  {
+    id: 6,
+    inputs: [
+      {
+        label: "¿Tienes estacionamiento?",
+        type: "switch",
+        placeholder: "",
+        required: {
+          value: true,
+          message: "Selecciona una opción",
+        },
+        class: "",
+        col: 12,
+        nameBack: "parking",
+      },
+      {
+        label: "¿Está techado?",
+        type: "switch",
+        placeholder: "",
+        required: {
+          value: true,
+          message: "Selecciona una opción",
+        },
+        class: "",
+        col: 12,
+        nameBack: "roof",
+      },
+    ],
+    path: "/step-6-parking",
+    step: 6,
+    summaryTitle: "Información de estacionamiento",
+    description: "¿Cómo es tu estacionamiento?",
+    labelButtonNext: "Continuar",
+  },
+  {
+    id: 7,
+    inputs: [
+      {
+        label: "Precio del departamento",
+        type: "number",
+        placeholder: "Ingresa una cantidad",
+        required: {
+          value: true,
+          message: "Introduzca una cantidad",
+        },
+        class: "",
+        col: 12,
+        nameBack: "amount",
+      },
+    ],
+    path: "/step-7-amount",
+    step: 7,
+    summaryTitle: "Información de venta",
+    description: "¿Cuanto crees que vale tu departamento en pesos $MXN?",
+    labelButtonNext: "Continuar",
+  },
+  {
+    id: 8,
+    inputs: [
+      {
+        label: "Sube una foto",
+        type: "file",
+        placeholder: "",
+        required: {
+          value: "",
+          message: "sube una foto",
+        },
+        class: "",
+        col: 12,
+        nameBack: "apartmentPhoto",
+      },
+    ],
+    path: "/step-8-elevator",
+    step: 8,
+    summaryTitle: "Información del departamento",
+    description: "Tiene una foto del departamento a la mano",
+    labelButtonNext: "Continuar",
+  },
+  {
+    id: 9,
+    inputs: [
+      {
+        label: "Tu apartamento cuenta con elevador",
+        type: "switch",
+        placeholder: "",
+        required: {
+          value: true,
+          message: "Selecciona una opción",
+        },
+        class: "",
+        col: 12,
+        nameBack: "elevator",
+      },
+    ],
+    path: "/step-9-parking",
+    step: 9,
+    summaryTitle: "Información de estacionamiento",
+    description: "¿Cómo es la accecibilidad en tu apartemento?",
     labelButtonNext: "Continuar",
   },
 ]);
