@@ -8,12 +8,17 @@ const Home = () => {
   } = useAppState();
   return (
     <>
-      <section className="home">
+      <section className="home d-flex align-items-center bg-light">
         <div className="container">
-          <h1>¿Quieres vender tu inmubeble? nosotros te ayudamos</h1>
-          <Link to={firstStep.path} className="btn btn-primary">
-            Vender
-          </Link>
+          <div className="row">
+            <div className="col-lg-5">
+              <h1 className="display-4 mb-3">¿Quieres vender tu inmubeble? <span class="fw-medium">nosotros te ayudamos</span></h1>
+              <p className="lead text-muted mb-4">Vendemos tu departamento en 10 días y de contado. Vende sin comisiones de una manera fácil, rápida y segura.</p>
+              <Link to={firstStep.path} className="btn btn-primary">
+                Vender ahora
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

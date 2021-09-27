@@ -20,7 +20,7 @@ const initialState = () => ({
           placeholder: "Ingresa tu nombre",
           required: {
             value: true,
-            message: "Introdusca un nombre.",
+            message: "Introduzca un nombre",
           },
           defaultValue: "",
           class: "",
@@ -43,7 +43,7 @@ const initialState = () => ({
           placeholder: "Ingresa tu correo",
           required: {
             value: true,
-            message: "Introdusca un correo valido.",
+            message: "Introduzca un correo válido",
           },
           class: "",
           col: 12,
@@ -60,19 +60,19 @@ const initialState = () => ({
       id: 3,
       inputs: [
         {
-          label: "",
+          label: "Calle",
           type: "text",
           placeholder: "Ingresa el nombre de la calle",
           required: {
             value: true,
-            message: "Introduzca una calle.",
+            message: "Introduzca una calle",
           },
           class: "",
           col: 12,
           nameBack: "street",
         },
         {
-          label: "",
+          label: "No. Exterior",
           type: "text",
           placeholder: "No. Exterior",
           required: {
@@ -84,7 +84,7 @@ const initialState = () => ({
           nameBack: "exteriorNumber",
         },
         {
-          label: "",
+          label: "No. Interior",
           type: "text",
           placeholder: "No. Interior",
           required: {
@@ -96,7 +96,7 @@ const initialState = () => ({
           nameBack: "interiorNumber",
         },
         {
-          label: "",
+          label: "Código Postal",
           type: "text",
           placeholder: "Ingresa el código postal",
           required: {
@@ -108,7 +108,7 @@ const initialState = () => ({
           nameBack: "zipCode",
         },
         {
-          label: "",
+          label: "Colonia",
           type: "text",
           placeholder: "Ingresa la colonia",
           required: {
@@ -120,7 +120,7 @@ const initialState = () => ({
           nameBack: "suburbio",
         },
         {
-          label: "",
+          label: "Municipio o delegación",
           type: "text",
           placeholder: "Municipio o delegación",
           required: {
@@ -147,7 +147,7 @@ const initialState = () => ({
           placeholder: "Ingresa tu piso",
           required: {
             value: true,
-            message: "Introduzca un piso valido.",
+            message: "Introduzca un piso válido",
           },
           class: "",
           col: 12,
@@ -157,7 +157,7 @@ const initialState = () => ({
       path: "/step-4-flat",
       step: 4,
       summaryTitle: "Información de piso",
-      description: "En que piso esta ubicado su departamento.",
+      description: "En que piso esta ubicado su departamento",
       labelButtonNext: "Continuar",
     },
     {
@@ -329,6 +329,7 @@ const reducer = produce((draft, action) => {
       });
 
       step.inputs.forEach((input) => {
+     
         draft.finalValues[input.nameBack] =
           input.defaultValue || input.fileName;
       });

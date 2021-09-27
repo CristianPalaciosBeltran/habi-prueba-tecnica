@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { useLocation, useHistory } from "react-router";
 import StepContext, { SET_STATE, useApp } from "../context/StepContext";
 import { useForm, FormProvider } from "react-hook-form";
@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
+import Modal from "react-bootstrap/Modal";
 
 import InputTypes from "./InputTypes";
 import StepsBar from "./StepsBar";
@@ -33,10 +34,15 @@ const StepForm = () => {
 
   const prev = () => history.goBack();
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  console.log(finalValues);
   return (
     <section className="step-form pt-5">
       <Container>
-        <Row>
+        <Row className="scroll">
           <StepsBar />
         </Row>
 
@@ -58,15 +64,15 @@ const StepForm = () => {
                   })}
                 </Row>
                 <Row className="mt-5">
-                  <Col lg={6}>
+                  <Col lg={6} lg={{ order: "first" }}>
                     {/*renderear solo del primero en adelante */}
                     {step.step > 1 && (
-                      <Button variant="outline-secondary" onClick={prev}>
+                      <Button variant="link" className="w-100" onClick={prev}>
                         Regresar
                       </Button>
                     )}
                   </Col>
-                  <Col lg={6}>
+                  <Col lg={6} xs={{ order: "first" }}>
                     <Button type="submit">{step.labelButtonNext}</Button>
                   </Col>
                 </Row>
@@ -74,20 +80,35 @@ const StepForm = () => {
             </FormProvider>
           </Col>
           <Col lg={{ span: 4, offset: 1 }}>
-            <div className="p-5 bg-primary">{JSON.stringify(finalValues)}</div>
+            {/* <div className="p-5 bg-primary">{JSON.stringify(finalValues)}</div> */}
             <div className="card bg-transparent d-none d-lg-block">
               <div class="card-body p-4">
                 <p className="fw-medium">Resumen</p>
-                <p>Diego Velázquez Rabasa</p>
-                <p>diego@gmail.com</p>
-                <p>Privada Cedros 4132, casa 8, Olivar de los padres, Cuajimalpa, 01729</p>
-                <p>Piso 28</p>
-                <ul>
-                      <li>Salón comunal</li>
-                      <li>Parque de juegos</li>
-                </ul>
-                <p>$2,500,000</p>
+                {Object.values(finalValues).map((value) => {
+                  return <small className="d-block mb-2">{value}</small>;
+                })}
               </div>
+            </div>
+            <div className="d-block d-lg-none">
+              <Button
+                variant="secondary"
+                className="w-100"
+                onClick={handleShow}
+              >
+                Resumen
+              </Button>
+
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Resumen</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  {/* {JSON.stringify(finalValues)} */}
+                  {Object.values(finalValues).map((value) => {
+                    return <small className="d-block mb-2">{value}</small>;
+                  })}
+                </Modal.Body>
+              </Modal>
             </div>
           </Col>
         </Row>

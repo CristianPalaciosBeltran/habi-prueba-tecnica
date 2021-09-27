@@ -4,24 +4,39 @@
     display: flex;
     .layout-step-info {
       small {
-        font-size: 0.75rem;
+        font-size: .75rem;
       }
     }
   }
   .circle {
+    background-color: $grey-x;
     width: 40px;
     height: 40px;
-    border: 1px solid $primary;
     border-radius: 50rem;
-    color: $primary;
+    color: black;
+    border: 1px solid $grey-x;
+    font-size: .75rem;
     small {
       width: 40px;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: .75rem;
     }
   }
 
   .active {
-    border: 1px solid red;
+    border: 1px solid $primary;
+    color: $primary;
+    background-color: $light;
+
   }
+
+  .complete {
+    background-color: $primary;
+    background-image: url('../assets/check.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: $primary
+  }
+
+  
 }

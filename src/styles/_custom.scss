@@ -8,3 +8,10 @@ h1 {
 .fw-medium {
     font-weight: 500 !important;
   }
+
+.home {
+    background-image: url('../assets/hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+}

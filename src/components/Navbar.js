@@ -15,7 +15,7 @@ const Navbar = () => {
             <img src={logoHabi} width={111} height={27} alt="logo habi" />
           </Link>
           <div>
-            <Button className="primary-button">Ayuda</Button>
+            <Button className="btn-sm">Ayuda</Button>
           </div>
         </Container>
       </NavbarB>
