@@ -9,7 +9,7 @@ const StepsBar = () => {
   const location = useLocation().pathname;
 
   const currentStep = steps.filter((step) => step.path === location)[0];
-  console.log({ currentStep });
+
   return (
     <Col lg={12} className="step-bar d-flex">
       {steps.map((step, i) => { 

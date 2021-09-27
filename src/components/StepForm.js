@@ -38,7 +38,6 @@ const StepForm = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log(finalValues);
   return (
     <section className="step-form pt-5">
       <Container>
