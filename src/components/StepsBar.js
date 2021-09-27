@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 const StepsBar = () => {
   const steps = useContext(StepContext);
   return (
-    <Col lg={3} className="step-bar">
+    <Col lg={12} className="step-bar d-flex">
       {steps.map((step, i) => {
         return (
           <div key={step.id} className="layout-step-bar">
