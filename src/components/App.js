@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, HashRouter } from "react-router-dom";
 import Home from "./Home";
 import StepForm from "./StepForm";
 import Navbar from "./Navbar";
@@ -21,14 +21,14 @@ const StepsRoutes = () => {
 };
 const Router = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/json-back" component={JsonBack} />
         <StepsRoutes />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
