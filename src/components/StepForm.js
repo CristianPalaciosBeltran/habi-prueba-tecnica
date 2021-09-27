@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useHistory } from "react-router";
-import StepContext, { SET_STATE, useApp } from "../context/StepContext";
+import { SET_STATE, useApp } from "../context/StepContext";
 import { useForm, FormProvider } from "react-hook-form";
 
 import Button from "react-bootstrap/Button";
@@ -28,7 +28,7 @@ const StepForm = () => {
     if (moveNext) {
       history.push(moveNext.path);
     } else {
-      history.push("/summary");
+      history.push("/json-back");
     }
   };
 

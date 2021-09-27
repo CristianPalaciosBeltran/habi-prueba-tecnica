@@ -4,6 +4,7 @@ import Home from "./Home";
 import StepForm from "./StepForm";
 import Navbar from "./Navbar";
 import { AppProvider, useAppState } from "../context/StepContext";
+import JsonBack from './JsonBack'
 
 const StepsRoutes = () => {
   const { steps } = useAppState();
@@ -24,6 +25,7 @@ const Router = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/json-back" component={JsonBack} />
         <StepsRoutes />
       </Switch>
     </BrowserRouter>
