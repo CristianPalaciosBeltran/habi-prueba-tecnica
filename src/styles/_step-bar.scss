@@ -1,6 +1,27 @@
 .step-bar {
+  margin-bottom: 5rem;
   .layout-step-bar {
     display: flex;
-    
+    .layout-step-info {
+      small {
+        font-size: 0.75rem;
+      }
+    }
+  }
+  .circle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $primary;
+    border-radius: 50rem;
+    color: $primary;
+    small {
+      width: 40px;
+      text-align: center;
+      font-size: 0.75rem;
+    }
+  }
+
+  .active {
+    border: 1px solid red;
   }
 }

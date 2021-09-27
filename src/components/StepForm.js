@@ -34,15 +34,15 @@ const StepForm = () => {
   const prev = () => history.goBack();
 
   return (
-    <section className="step-form ">
+    <section className="step-form pt-5">
       <Container>
         <Row>
           <StepsBar />
         </Row>
 
         <Row>
-          <Col lg={8}>
-            <h1 className="mb-5">{step.description}</h1>
+          <Col lg={7}>
+            <h1>{step.description}</h1>
             <FormProvider {...methods}>
               <Form
                 onSubmit={methods.handleSubmit(onSubmit)}
@@ -51,7 +51,7 @@ const StepForm = () => {
                 <Row>
                   {step.inputs.map((input, i) => {
                     return (
-                      <Col lg={input.col} key={i} className="layout-input">
+                      <Col lg={input.col} key={i} className="layout-input mb-3">
                         <InputTypes input={input} />
                       </Col>
                     );
@@ -73,8 +73,22 @@ const StepForm = () => {
               </Form>
             </FormProvider>
           </Col>
-          <Col lg={{ span: 3, offset: 1 }}>
+          <Col lg={{ span: 4, offset: 1 }}>
             <div className="p-5 bg-primary">{JSON.stringify(finalValues)}</div>
+            <div className="card bg-transparent d-none d-lg-block">
+              <div class="card-body p-4">
+                <p className="fw-medium">Resumen</p>
+                <p>Diego Velázquez Rabasa</p>
+                <p>diego@gmail.com</p>
+                <p>Privada Cedros 4132, casa 8, Olivar de los padres, Cuajimalpa, 01729</p>
+                <p>Piso 28</p>
+                <ul>
+                      <li>Salón comunal</li>
+                      <li>Parque de juegos</li>
+                </ul>
+                <p>$2,500,000</p>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>

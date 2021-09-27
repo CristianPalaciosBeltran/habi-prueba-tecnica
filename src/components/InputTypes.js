@@ -16,9 +16,10 @@ const Input = ({
   return (
     <>
       <Form.Label htmlFor={nameBack}>
-        {label && `${label} ${required.value && "*"}`}
+        <span class="fw-medium">{label && `${label} ${required.value && "*"}`}</span>
       </Form.Label>
       <Form.Control
+        className="form-control-file"
         type={type}
         placeholder={placeholder}
         name={nameBack}
@@ -49,7 +50,7 @@ const CheckBox = ({
         type={type}
         name={nameBack}
         defaultChecked={defaultChecked}
-        className={"input-check me-2"}
+        className={"input-check me-3"}
         {...register(nameBack, {
           required: { value: required.value, message: required.message },
         })}

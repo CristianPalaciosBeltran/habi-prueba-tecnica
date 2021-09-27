@@ -1,26 +1,55 @@
 .step-form {
-  padding-top: 100px;
-
   .layout-input {
     display: flex;
     flex-direction: column;
-    input {
+    .form-control {
       background-color: $grey-x;
       border: none;
       border-radius: 1rem;
       padding-inline-end: 20px;
       padding-inline-start: 20px;
-      padding-block-start: 22px;
-      padding-block-end: 22px;
+      padding-block-start: 20px;
+      padding-block-end: 20px;
+      &:focus {
+        box-shadow: none;
+      }
+      &[type="file"] {
+        border: 1px dashed $grey;
+        background-color: $light;
+        &:hover {
+          background-color: $grey-x;
+        }
+      }
     }
   }
-
+  .btn {
+    padding-block-end: 16px;
+    padding-block-start: 16px;
+    border-radius: 16px;
+    font-weight: 500;
+  }
   .btn-primary {
     background-color: $primary;
     width: 100%;
-    padding-block-end: 20px;
-    padding-block-start: 20px;
-    border-radius: 16px;
+    border: 1px solid $primary;
+    &:hover,
+    &:focus,
+    &:active:focus {
+      background-color: darken($primary, 10%);
+      border: 1px solid darken($primary, 10%);
+      box-shadow: none;
+    }
+  }
+
+  .btn-link {
+    color: $primary;
+    text-decoration: none;
+    &:hover {
+      color: darken($primary, 10%);
+    }
+    &:focus {
+      box-shadow: none;
+    }
   }
 
   .btn-outline-secondary {
@@ -30,38 +59,31 @@
     border-radius: 16px;
   }
 
-  .switch-radio {
-    input[type="radio"] {
-      //display: none;
-    }
-    label {
-      position: relative;
-      color: $primary;
-      font-size: 30px;
-      border: 2px solid $primary;
-      border-radius: 8px;
-      padding: 10px 50px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
-    label:before {
-      content: "";
-      height: 30px;
-      width: 30px;
-      border: 3px solid $primary;
-      border-radius: 50%;
-      margin-right: 20px;
-    }
-    input[type="radio"]:checked + label {
+  .form-check-input {
+    border-radius: 0.5rem !important;
+    border: 1px solid $grey;
+    width: 32px;
+    height: 32px;
+    &:checked {
       background-color: $primary;
-      color: white;
+      border: 1px solid $primary;
     }
-    input[type="radio"]:checked + label:before {
-      height: 16px;
-      width: 16px;
-      border: 10px solid $primary;
-      background-color: $primary;
+    &:focus {
+      box-shadow: none;
+      border-color: $primary;
     }
+    &:checked[type="checkbox"] {
+      background-image: url("../assets/check.svg");
+      background-size: 50%;
+    }
+    &[type="radio"] {
+      border-radius: 50% !important;
+      background-image: none !important;
+      margin-right: 1rem;
+    }
+  }
+
+  .steps-overflow {
+    overflow-x: hidden;
   }
 }
