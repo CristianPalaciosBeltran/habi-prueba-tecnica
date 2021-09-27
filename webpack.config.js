@@ -3,14 +3,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const CssMiniMizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require('terser-webpack-plugin');
-
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
+    publicPath: "/",
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -38,9 +38,9 @@ module.exports = {
       //   use: ["style-loader", "css-loader", "sass-loader"],
       // },
       {
-        test: /\.css$/i,                                                                                                                                                             
-        use: ["style-loader", "css-loader"],                                                                                                                          
-      }, 
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
       {
         test: /\.(scss)$/,
         use: [
@@ -94,14 +94,10 @@ module.exports = {
         },
       ],
     }),
-
   ],
   optimization: {
-    minimize:true,
-    minimizer:[
-      new CssMiniMizerPlugin(),
-      new TerserPlugin(),
-      ]		
+    minimize: true,
+    minimizer: [new CssMiniMizerPlugin(), new TerserPlugin()],
   },
   devServer: {
     static: {
